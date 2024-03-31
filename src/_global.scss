@@ -40,7 +40,10 @@
 }
 
 @mixin act($trans: 200ms) {
-    transition: $trans, opacity 80ms, transform 400ms cubic-bezier(0.14, 1.02, 0.17, 0.03) !important;
+    transition:
+        $trans,
+        opacity 80ms,
+        transform 400ms cubic-bezier(0.14, 1.02, 0.17, 0.03) !important;
     &:active {
         transform: scale(0.93);
         filter: opacity(0.75);

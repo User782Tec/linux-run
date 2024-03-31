@@ -1,6 +1,6 @@
-import React from 'react';
-import './Input.scss';
-import PropTypes from 'prop-types';
+import React from "react";
+import "./Input.scss";
+import PropTypes from "prop-types";
 Input.propTypes = {
     placeholder: PropTypes.string,
     value: PropTypes.string,
@@ -30,7 +30,7 @@ Input.propTypes = {
  * 现代风格的输入框
  * @param {Props} props
  */
-function Input({ type = 'text', placeholder = '', value = '', disabled = false, readonly = false, before = null, beforeWidth = 0, width = '', style = {}, ...props }) {
+function Input({ type = "text", placeholder = "", value = "", disabled = false, readonly = false, before = null, beforeWidth = 0, width = "", style = {}, ...props }) {
     return (
         <div className="input-container">
             <div className="input-before">{before}</div>

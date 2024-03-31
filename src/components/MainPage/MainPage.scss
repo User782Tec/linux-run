@@ -1,39 +1,50 @@
-@import '../../global';
+@import "../../global";
 
 .mainPage {
     @include full-size;
     display: grid;
-    grid-template-rows: calc(100% - 100px) 100px;
+    grid-template-rows: auto 113px;
+    gap: 5px;
     > * {
         @include full-size;
     }
     .contents {
         display: grid;
-        grid-template-columns: 63px auto;
+        grid-template-columns: 56px auto;
         gap: 18px;
         > .left {
             @include center;
-            img {
-                width: 100%;
+            .image {
+                @include full-size;
+                background-image: url("../../assets/logo.png");
+                background-size: contain;
+                background-position: center center;
+                background-repeat: no-repeat;
             }
         }
         > .right {
-            font-size: 0.88em;
+            font-size: 0.9em;
             @include center;
         }
     }
     .container {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 5px;
         > .buttons {
             display: flex;
             justify-content: flex-end;
             gap: 15px;
             > * {
-                width: 4.87em;
+                width: 5.87em;
                 text-align: center;
             }
+            width: 100%;
+        }
+        > .input {
+            display: grid;
+            grid-template-columns: 4.5em auto;
+            align-items: center;
         }
     }
 }

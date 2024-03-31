@@ -1,4 +1,4 @@
-@import '../../global';
+@import "../../global";
 
 .input-container {
     @include center;
@@ -12,7 +12,7 @@
 
     .input {
         background-color: var(--bg50);
-        border: none;
+        border: 1px solid #7f7f7f7f;
         border-bottom: 2.5px solid;
         border-bottom-color: #7f7f7f7f;
         border-radius: 7px;
@@ -22,7 +22,9 @@
         color: var(--text);
         font-size: inherit;
         line-height: inherit;
-        transition: 100ms, border 0s;
+        transition:
+            100ms,
+            border 0s;
         box-shadow: 0 1px 2px var(--s3d);
         &:hover {
             background: var(--cm);
@@ -32,7 +34,7 @@
             background-clip: padding-box, border-box;
             background-origin: padding-box, border-box;
             background-image: linear-gradient(var(--bg), var(--bg)), linear-gradient(90deg, var(--theme-1), var(--theme-2));
-            border-bottom-color: transparent;
+            border-color: transparent;
             box-shadow: 0 1px 10px var(--s3d);
             opacity: 1;
         }

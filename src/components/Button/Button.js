@@ -1,6 +1,6 @@
-import React from 'react';
-import './Button.scss';
-import PropTypes from 'prop-types';
+import React from "react";
+import "./Button.scss";
+import PropTypes from "prop-types";
 Button.propTypes = {
     children: PropTypes.node,
     onClick: PropTypes.func,
@@ -18,9 +18,9 @@ Button.propTypes = {
  * 现代风格的按钮
  * @param {Props} props
  */
-function Button({ children = <></>, type = 'normal', onClick = () => {} }) {
+function Button({ children = <></>, type = "normal", onClick = () => {} }) {
     return (
-        <div className={`button${type == 'normal' ? ' normal' : ''}${type == 'submit' ? ' submit' : ''}${type == 'cancel' ? ' cancel' : ''}`} onClick={onClick}>
+        <div className={`button${type == "normal" ? " normal" : ""}${type == "submit" ? " submit" : ""}${type == "cancel" ? " cancel" : ""}`} onClick={onClick}>
             {children}
         </div>
     );

@@ -32,7 +32,7 @@ jobs:
     - name: Release build
       uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
       with:
-        body: "Full changelog: <https://github.com/User782Tec/Desktop-icon-tools/commits/${{ github.ref_name }}>"
+        body: "Full changelog: <https://github.com/User782Tec/linux-run/commits/${{ github.ref_name }}>"
         name: ${{ github.ref_name }}
         tag_name: ${{ github.ref_name }}
         path: ./dist/*.AppImage
@@ -40,7 +40,7 @@ jobs:
     - name: Release build
       uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
       with:
-        body: "Full changelog: <https://github.com/User782Tec/Desktop-icon-tools/commits/${{ github.ref_name }}>"
+        body: "Full changelog: <https://github.com/User782Tec/linux-run/commits/${{ github.ref_name }}>"
         name: ${{ github.ref_name }}
         tag_name: ${{ github.ref_name }}
         path: ./dist/*.deb
@@ -48,7 +48,7 @@ jobs:
     - name: Release build
       uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
       with:
-        body: "Full changelog: <https://github.com/User782Tec/Desktop-icon-tools/commits/${{ github.ref_name }}>"
+        body: "Full changelog: <https://github.com/User782Tec/linux-run/commits/${{ github.ref_name }}>"
         name: ${{ github.ref_name }}
         tag_name: ${{ github.ref_name }}
         path: ./dist/*.rpm

@@ -1,4 +1,4 @@
-@import './global';
+@import "./global";
 
 #root {
     --text: #000;
@@ -49,10 +49,10 @@
     --s3d: #11111150;
 }
 
-
 #root {
     @include full-size;
     padding: 0px 10px;
+    overflow: hidden;
 }
 
 img {
@@ -126,9 +126,9 @@ hr {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-[type='button'],
-[type='reset'],
-[type='submit'],
+[type="button"],
+[type="reset"],
+[type="submit"],
 button {
     -webkit-appearance: button;
     appearance: button;

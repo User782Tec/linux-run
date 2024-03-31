@@ -1,35 +1,35 @@
-const { app, BrowserWindow, ipcMain, globalShortcut, Tray, Menu, screen } = require("electron");
+const { app, BrowserWindow, ipcMain, globalShortcut, dialog, Tray, Menu, screen } = require("electron");
 const { exec } = require("child_process");
 const path = require("path");
+const os = require("os");
+const { getHistory, setHistory, checkCommand } = require("./utils");
+
 const DEVELOPMENT = !app.isPackaged;
+const lock = app.requestSingleInstanceLock();
+if (!lock) {
+    app.exit();
+}
 
-let root = null;
-
+let root;
 function loadApp() {
     const icon = path.join(__dirname, "logo.png");
+    const menu = Menu.buildFromTemplate([
+        {
+            id: 1,
+            type: "normal",
+            label: "退出",
+            click: () => {
+                app.exit();
+            }
+        },
+        { id: 2, type: "normal", label: "关于" },
+        { id: 3, type: "normal", label: "配置" }
+    ]);
     const tray = new Tray(icon);
-    tray.setContextMenu(
-        Menu.buildFromTemplate([
-            {
-                id: 1,
-                type: "normal",
-                label: "退出",
-                click: () => {
-                    app.exit();
-                }
-            },
-            { id: 2, type: "normal", label: "关于" },
-            { id: 3, type: "normal", label: "配置" }
-        ])
-    );
+    tray.setContextMenu(menu);
     globalShortcut.register("Meta+R", () => {
         if (BrowserWindow.getAllWindows().length === 0) {
             createWindow();
-        }
-    });
-    globalShortcut.register("Esc", () => {
-        if (BrowserWindow.getAllWindows().length != 0) {
-            closeWindow();
         }
     });
 }
@@ -58,14 +58,24 @@ function createWindow() {
         root.loadFile(path.join(__dirname, "../../app.asar/build/index.html"));
     }
     root.show();
+    if (BrowserWindow.getAllWindows().length != 0) {
+        globalShortcut.register("Esc", () => {
+            if (BrowserWindow.getAllWindows().length != 0) {
+                closeWindow();
+            }
+        });
+    }
 }
 
 function closeWindow() {
     root.close();
+    globalShortcut.unregister("Esc");
 }
 
 app.on("ready", () => {
-    loadApp();
+    if (lock) {
+        loadApp();
+    }
 });
 
 app.on("before-quit", (event) => {
@@ -73,7 +83,18 @@ app.on("before-quit", (event) => {
 });
 
 ipcMain.on("execute", (_, data) => {
-    exec(`nohup ${data} > /dev/null 2>&1 &`);
+    const history = getHistory();
+    if (data.command != getHistory().pop() && data.command != "") {
+        history.push(data.command);
+        setHistory(history);
+    }
+    const checkResult = checkCommand(data.command);
+    console.log(checkResult);
+    if (data.root === true) {
+        exec(`/usr/bin/pkexec env DISPLAY=:0 XAUTHORITY=${path.join(os.homedir(), ".Xauthority")} nohup ${checkResult ? "" : "xdg-open "}${data.command} > /dev/null 2>&1 &`);
+    } else if (data.root === false) {
+        exec(`nohup ${checkResult ? "" : "xdg-open "}${data.command} > /dev/null 2>&1 &`);
+    }
     closeWindow();
 });
 
@@ -81,4 +102,17 @@ ipcMain.on("close", (_, data) => {
     if (data === true) {
         closeWindow();
     }
+});
+
+ipcMain.handle("open-file", async () => {
+    const { canceled, filePaths } = await dialog.showOpenDialog({
+        properties: ["openFile", "showHiddenFiles"]
+    });
+    if (!canceled) {
+        return filePaths[0];
+    }
+});
+
+ipcMain.handle("get-history", () => {
+    return getHistory();
 });

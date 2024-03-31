@@ -1,62 +1,62 @@
 {
-  "name": "linux-run",
-  "version": "0.1.0",
-  "private": true,
-  "main": "./public/electron.js",
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "electron-store": "^8.2.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "sass": "^1.72.0",
-    "web-vitals": "^3.5.2"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.2",
-    "cross-env": "^7.0.3",
-    "electron": "^29.1.6",
-    "electron-builder": "^24.13.3",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "prettier": "^3.2.5",
-    "react-app-rewired": "^2.2.1",
-    "wait-on": "^7.2.0",
-    "yarn": "^1.22.22"
-  },
-  "scripts": {
-    "start": "concurrently \"cross-env BROWSER=none yarn start:react\" \"wait-on http://localhost:3000 && yarn start:electron\"",
-    "start:react": "react-app-rewired start",
-    "start:electron": "electron .",
-    "build:react": "react-app-rewired build",
-    "build:electron": "electron-builder --linux",
-    "build": "yarn build:react && electron-builder --linux"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "author": {
-    "name": "User782Tec",
-    "email": "ls3309205212@outlook.com",
-    "url": "https://github.com/User782Tec"
-  },
-  "description": "在 Linux 系统上实现类似于 Windows 中的运行程序",
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "linux-run",
+    "version": "0.1.0",
+    "private": true,
+    "main": "./public/electron.js",
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^13.0.0",
+        "@testing-library/user-event": "^13.2.1",
+        "electron-store": "^8.2.0",
+        "prop-types": "^15.8.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-scripts": "5.0.1",
+        "sass": "^1.72.0",
+        "web-vitals": "^3.5.2"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "cross-env": "^7.0.3",
+        "electron": "^29.1.6",
+        "electron-builder": "^24.13.3",
+        "eslint": "^8.57.0",
+        "eslint-plugin-react": "^7.34.1",
+        "prettier": "^3.2.5",
+        "react-app-rewired": "^2.2.1",
+        "wait-on": "^7.2.0",
+        "yarn": "^1.22.22"
+    },
+    "scripts": {
+        "start": "concurrently \"cross-env BROWSER=none yarn start:react\" \"wait-on http://localhost:3000 && yarn start:electron\"",
+        "start:react": "react-app-rewired start",
+        "start:electron": "electron .",
+        "build:react": "react-app-rewired build",
+        "build:electron": "electron-builder --linux",
+        "build": "yarn build:react && electron-builder --linux"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "author": {
+        "name": "User782Tec",
+        "email": "ls3309205212@outlook.com",
+        "url": "https://github.com/User782Tec"
+    },
+    "description": "在 Linux 系统上实现类似于 Windows 中的运行程序",
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
