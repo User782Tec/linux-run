@@ -28,7 +28,7 @@ jobs:
         cache: 'yarn'
     - run: sudo yarn global add electron-builder
     - run: yarn install
-    - run: sudo yarn build-linux
+    - run: sudo yarn build
     - name: Release build
       uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
       with:
