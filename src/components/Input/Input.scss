@@ -1,0 +1,40 @@
+@import '../../global';
+
+.input-container {
+    @include center;
+
+    .input-before {
+        position: relative;
+        width: 0;
+        left: 5px;
+        pointer-events: none;
+    }
+
+    .input {
+        background-color: var(--bg50);
+        border: none;
+        border-bottom: 2.5px solid;
+        border-bottom-color: #7f7f7f7f;
+        border-radius: 7px;
+        padding: 3px 5px 3px 8px;
+        outline: medium;
+        width: 100%;
+        color: var(--text);
+        font-size: inherit;
+        line-height: inherit;
+        transition: 100ms, border 0s;
+        box-shadow: 0 1px 2px var(--s3d);
+        &:hover {
+            background: var(--cm);
+        }
+        &:focus {
+            background-color: var(--bg);
+            background-clip: padding-box, border-box;
+            background-origin: padding-box, border-box;
+            background-image: linear-gradient(var(--bg), var(--bg)), linear-gradient(90deg, var(--theme-1), var(--theme-2));
+            border-bottom-color: transparent;
+            box-shadow: 0 1px 10px var(--s3d);
+            opacity: 1;
+        }
+    }
+}

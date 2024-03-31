@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Linux Run
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+在 Linux 系统上实现类似于 Windows 中的运行程序
 
-## Available Scripts
+## 特别感谢
 
-In the project directory, you can run:
+感谢 @tjy-gitnub 为本项目的 UI 设计做出了重要贡献！
 
-### `yarn start`
+## 安装方式
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. 您可以直接从右侧的Releases中找到最新发行版的安装程序并下载安装。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    - 目前支持以下平台：
+        - Linux (.deb / .rpm / .AppImage): x64, ARM64, ARMv7l
 
-### `yarn test`
+2. 通过项目构建。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    1. 克隆本仓库或下载本项目压缩包，并确保计算机安装了Node.js(>=20.10.0)和yarn。
+    2. 进入项目根目录，运行`yarn install`。
+    3. 运行`yarn start`即可测试。
+    4. 构建应用：`yarn build`，可执行文件在 `/dist` 文件夹内
 
-### `yarn build`
+## 关于 Github Actions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+本项目采用Github Actions Workflow自动发布构建。Github Releases由 @BuildBot-782 发布、管理。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 开发须知
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+提交前必须使用 ESLint 修复问题并使用 Prettier 格式化文档。
 
-### `yarn eject`
+建议使用 yarn 代替 npm 作为包管理工具。
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+有以下脚本可用：
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   `yarn start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    -   同时启动 React 和 Electron 开发环境。
+    -   如需单独启动 React 开发环境，请使用`yarn start:react`。
+    -   如需单独启动 Electron 开发环境，请使用`yarn start:electron`。
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+-   `yarn build`
+    -   打包 Electron Linux 桌面应用。
+    -   如需仅打包 React 网页应用，请使用`yarn build:react`。
+    -   Electron-builder 配置文件位于`/electron-builder.json`。
+    -   目前支持以下平台：
+        -   Linux (.deb / .rpm / .AppImage): x64, ARM64, ARMv7l
+    -   特别提醒：
+        -   每个平台可以正常打包该平台对应的应用，但在 Linux 上打包其他 Linux 发行版时要安装其对应的包管理工具。例如，在 Debian 上打包 .rpm 应用需要提前安装 rpm 包管理工具。
+        -   如需特殊配置打包，可直接使用`yarn electron-build`使用自定义参数打包。
 
-## Learn More
+## 开源说明
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+本项目作者：User782Tec
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+本项目链接：<https://github.com/User782Tec/linux-run>
 
-### Code Splitting
+此项目是一个开源项目。此项目使用 GPL-3.0 开源许可。开源许可是具有法律效力的合同，请自觉遵守开源许可，尊重他人劳动。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+根据许可，你可以对该项目进行传播、分发、修改以及二次发布，包括个人和商业用途，但我方不鼓励一切商业用途。
 
-### Analyzing the Bundle Size
+您必须给出源码来源，**包括作者，项目链接**（见上）等，必须使用相同的协议开源。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+若此项目的源码作为项目的一部分与你私有的源码一起发布时，你可以使用其它协议，**但要声明 GPL-3.0 部分的内容并声明此部分继续遵循 GPL-3.0 协议**。
 
-### Making a Progressive Web App
+不是在该项目基础上进行增加、修改的，仅参考源码的，不需要开源，但也仅供学习用途。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+在此规定附加条例：
 
-### Advanced Configuration
+-   本项目使用的开源项目的开源协议以其使用的开源协议为准。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+-   任何使用或分享本项目者，必须在介绍里附上原作者及项目链接，不得故意隐藏原项目中的署名信息、原作者或项目链接，不得限制查看原项目中的署名信息、原作者或项目链接，且不得修改原项目中的署名信息；
 
-### Deployment
+-   将本项目用于商业用途或使用此项目盈利者，需要**标明原作者及项目链接**，且**必须**以 GPL-3.0 协议开源。未经修改的源代码**不得用于**商业用途或盈利；
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+-   任何使用或分享本项目者，不得移除或故意隐藏、限制查看本声明；
 
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   请您遵守上述规定，我方有权通过法律手段进行合法维权。

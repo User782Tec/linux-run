@@ -1,0 +1,55 @@
+name: Build for Linux
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+env:
+  GH_TOKEN:
+    ${{ secrets.TOKEN }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+    - run: sudo yarn global add electron-builder
+    - run: yarn install
+    - run: sudo yarn build-linux
+    - name: Release build
+      uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
+      with:
+        body: "Full changelog: <https://github.com/User782Tec/Desktop-icon-tools/commits/${{ github.ref_name }}>"
+        name: ${{ github.ref_name }}
+        tag_name: ${{ github.ref_name }}
+        path: ./dist/*.AppImage
+        token: ${{ secrets.TOKEN }}
+    - name: Release build
+      uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
+      with:
+        body: "Full changelog: <https://github.com/User782Tec/Desktop-icon-tools/commits/${{ github.ref_name }}>"
+        name: ${{ github.ref_name }}
+        tag_name: ${{ github.ref_name }}
+        path: ./dist/*.deb
+        token: ${{ secrets.TOKEN }}
+    - name: Release build
+      uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
+      with:
+        body: "Full changelog: <https://github.com/User782Tec/Desktop-icon-tools/commits/${{ github.ref_name }}>"
+        name: ${{ github.ref_name }}
+        tag_name: ${{ github.ref_name }}
+        path: ./dist/*.rpm
+        token: ${{ secrets.TOKEN }}

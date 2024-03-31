@@ -1,0 +1,39 @@
+@import '../../global';
+
+.mainPage {
+    @include full-size;
+    display: grid;
+    grid-template-rows: calc(100% - 100px) 100px;
+    > * {
+        @include full-size;
+    }
+    .contents {
+        display: grid;
+        grid-template-columns: 63px auto;
+        gap: 18px;
+        > .left {
+            @include center;
+            img {
+                width: 100%;
+            }
+        }
+        > .right {
+            font-size: 0.88em;
+            @include center;
+        }
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        > .buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            > * {
+                width: 4.87em;
+                text-align: center;
+            }
+        }
+    }
+}

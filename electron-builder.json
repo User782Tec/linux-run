@@ -1,0 +1,25 @@
+{
+    "artifactName": "${name}-v${version}-${os}-${arch}.${ext}",
+    "appId": "studio.plasma.linuxrun",
+    "icon": "./public/logo.png",
+    "linux": {
+        "target": [
+            {
+                "target": "deb",
+                "arch": ["x64", "arm64", "armv7l"]
+            },
+            {
+                "target": "rpm",
+                "arch": ["x64", "arm64", "armv7l"]
+            },
+            {
+                "target": "AppImage",
+                "arch": ["x64", "arm64", "armv7l"]
+            }
+        ],
+        "icon": "./public/logo.png"
+    },
+    "deb": {
+        "icon": "./public/logo.png"
+    }
+}
